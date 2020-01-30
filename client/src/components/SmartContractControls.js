@@ -1,5 +1,5 @@
 import React from "react";
-import { Input, Flex, Box, Text, Button } from "rimble-ui";
+import { Input, Flex, Box, Text, Button, Link, EthAddress } from "rimble-ui";
 import ipfs from '../ipfs';
 // Address of the deployed smart contract (from etherscan)
 const contractAddress = "0xF0293e1688c8BAA9bC1eC7c28A64baF6C360B132";
@@ -92,7 +92,8 @@ class SmartContractControls extends React.Component {
     needsUpdate: false,
     fileName: null
   }
-
+  
+  //captures the file uploaded
   captureFile = (event)=>{
     event.preventDefault();
     let needsUpdate = true;
@@ -105,37 +106,19 @@ class SmartContractControls extends React.Component {
     reader.onloadend =() => this.convertToBuffer(reader);
   }
 
+  //converts file to buffer
   convertToBuffer = async(reader) =>{
     const buffer = await Buffer.from(reader.result);
     this.setState({ buffer })
   }
 
+  //uploads document file to IPFS and sets the IPFS Hash in response to ipfsHash
   onIPFSSubmit = async() =>{
     await ipfs.add(this.state.buffer, (err, ipfsHash)=>{
       console.log(err, ipfsHash);
       this.setState({ipfsHash:ipfsHash[0].hash});
     })
   }
-
-  // gets the number stored in smart contract storage
-  getNumber = ({ ...props }) => {
-    try {
-        this.props.contract.methods
-        .notarize(this.state.fileName)
-        .send({from: "0xA951C2baa16caC2ce1128f6b608F13c164923e37"})
-        .then(value => {
-          value = value
-          this.setState({ value, needsUpdate: false });
-          console.log("Completed notarization");
-        })
-        .catch(error => {
-          console.log(error);
-          this.setState({ error });
-        });
-    } catch (error) {
-      console.log("error", error);
-    }
-  };
 
   // Check for updates to the transactions collection
   processTransactionUpdates = prevProps => {
@@ -153,7 +136,8 @@ class SmartContractControls extends React.Component {
       }
     });
   };
-
+  
+  // Notarizes document! 
   notarize = ({...props}) => {
     function callback(res, err){
       console.log("notarize function callback: " + res)
@@ -218,8 +202,12 @@ class SmartContractControls extends React.Component {
             Notarize and Upload to IPFS
           </Button>
         </Flex>
+        <br/>
+        <br/>
         <Flex>
-       {this.state.ipfsHash ? <Text>{this.state.ipfsHash} <br/> is your IPFS Hash for {this.state.fileName}</Text>: ""}
+       {this.state.ipfsHash ? <Text><strong>IPFS Hash for {this.state.fileName}<br/><EthAddress address={this.state.ipfsHash}/></strong> <br/><strong>To see the file on IPFS, go to the</strong> <Link href={'//ipfsbrowser.com/'} target="_blank" title="This link goes somewhere">
+  IPFS Hash Browser
+</Link> <strong>and enter in this hash.</strong> </Text>: ""}
         </Flex>
 
       </Box>
