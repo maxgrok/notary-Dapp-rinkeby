@@ -1,6 +1,7 @@
 pragma solidity ^0.5.0;
+import './Ownable.sol';
 
-contract ProofOfExistence {
+contract ProofOfExistence is Ownable {
 
   mapping (bytes32 => bool) public proofs;
 
