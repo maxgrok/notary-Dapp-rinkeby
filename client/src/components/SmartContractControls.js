@@ -1,5 +1,5 @@
 import React from "react";
-import { Input, Flex, Box, Text, Button, Link, EthAddress } from "rimble-ui";
+import { Input, Card, Flex, Box, Text, Button, Link, EthAddress } from "rimble-ui";
 import ipfs from '../ipfs';
 // Address of the deployed smart contract (from etherscan)
 const contractAddress = "0xF0293e1688c8BAA9bC1eC7c28A64baF6C360B132";
@@ -90,7 +90,7 @@ class SmartContractControls extends React.Component {
   state = {
     value: "Upload a Document Here",
     needsUpdate: false,
-    fileName: null
+    ipfsHash: null
   }
   
   //captures the file uploaded
@@ -98,12 +98,14 @@ class SmartContractControls extends React.Component {
     event.preventDefault();
     let needsUpdate = true;
     const file = event.target.files[0];
-    let fileName = event.target.files[0].name
-    console.log(fileName)
-    this.setState({fileName});
+    try {
+
     let reader = new window.FileReader();
     reader.readAsArrayBuffer(file);
     reader.onloadend =() => this.convertToBuffer(reader);
+    }catch {
+      console.log("error")
+    }
   }
 
   //converts file to buffer
@@ -114,10 +116,11 @@ class SmartContractControls extends React.Component {
 
   //uploads document file to IPFS and sets the IPFS Hash in response to ipfsHash
   onIPFSSubmit = async() =>{
-    await ipfs.add(this.state.buffer, (err, ipfsHash)=>{
+     await ipfs.add(this.state.buffer, (err, ipfsHash)=>{
       console.log(err, ipfsHash);
       this.setState({ipfsHash:ipfsHash[0].hash});
-    })
+      this.notarize(ipfsHash[0].hash);
+    });
   }
 
   // Check for updates to the transactions collection
@@ -138,13 +141,11 @@ class SmartContractControls extends React.Component {
   };
   
   // Notarizes document! 
-  notarize = ({...props}) => {
+  notarize = (ipfsHash, {...props}) => {
     function callback(res, err){
       console.log("notarize function callback: " + res)
-          console.log("Completed notarization");
     }
-    let value = this.state.fileName;
-    this.props.contractMethodSendWrapper("notarize", value, callback);
+    this.props.contractMethodSendWrapper("notarize", ipfsHash, callback);
   };
 
   componentDidMount() {
@@ -178,9 +179,6 @@ class SmartContractControls extends React.Component {
           </Button.Outline> */}
         </Flex>
 
-       <Flex>
-      </Flex>
-
         <Flex flexDirection={'row'} className="docNode">
           {/* <Button
             onClick={this.decrementCounter}
@@ -189,27 +187,46 @@ class SmartContractControls extends React.Component {
           >
             Decrease value
           </Button> */}
-          <Input type="file" name="file" className="doc" onChange={this.captureFile} /><br/><br/>
-          <br/>
-          <Button as="submit"
+          <Card maxWidth={'640px'} mx={'auto'} p={3} px={4}>
+                  <Text><strong>Step 2:</strong> Upload a File from your Computer!
+<br/><br/>
+                  You will see the button "Choose File..." update with your file's name upon selecting a file from your computer!
+<br/><br/>
+                  The application will not notarize or upload without this! <br/><br/>
+                  </Text>
+          <Input type="file" backgroundColor="blue" className="doc" onChange={this.captureFile} />
+            </Card>
+        </Flex>
+        <br/>
+        <br/>
+            <Card maxWidth={'640px'} mx={'auto'} p={3} px={4}>
+                  <Text><strong>Step 3:</strong> Click "Upload to IPFS and Notarize" to upload your document to IPFS and notarize it. 
+                <br/><br/>
+                  You will see an update with your IPFS Hash and a link to the IPFS Browser to see your file! 
+
+                  <br/><br/>You will also be prompted by MetaMask to notarize the IPFS Hash of the document you uploaded. <br/><br/><strong>Please click "Confirm" in the MetaMask pop up after clicking this button</strong>
+                  </Text>
+        <Flex flexDirection={'row'} px={0} justifyContent="space-between" alignItems={'center'}>
+          <Button mainColor="green"
+            icon="PinDrop"
             flex={'1'}
-            onClick={(e)=> {
+            onClick={async(e)=> {
               e.preventDefault();
-              this.notarize(e);
               this.onIPFSSubmit();
             }}
           >
-            Notarize and Upload to IPFS
+            Upload to IPFS and Notarize
           </Button>
-        </Flex>
+          </Flex>
+
         <br/>
         <br/>
         <Flex>
-       {this.state.ipfsHash ? <Text><strong>IPFS Hash for {this.state.fileName}<br/><EthAddress address={this.state.ipfsHash}/></strong> <br/><strong>To see the file on IPFS, go to the</strong> <Link href={'//ipfsbrowser.com/'} target="_blank" title="This link goes somewhere">
+       {this.state.ipfsHash ? <Text><strong>IPFS Hash for your file: <br/><EthAddress address={this.state.ipfsHash}/></strong> <br/><strong>To see the file on IPFS, go to the</strong> <Link href={'//ipfsbrowser.com/'} target="_blank" title="This link goes somewhere">
   IPFS Hash Browser
 </Link> <strong>and enter in this hash.</strong> </Text>: ""}
         </Flex>
-
+</Card>
       </Box>
 
     );

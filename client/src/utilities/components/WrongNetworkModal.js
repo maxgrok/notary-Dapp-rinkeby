@@ -28,7 +28,7 @@ class WrongNetworkModal extends React.Component {
           </Text.span>{" "}
           network. You’re currently on the{" "}
           <Text.span style={{ textTransform: "capitalize" }}>
-            {" "}
+            {" "}ž
             {this.props.network.current.name}
           </Text.span>{" "}
           network.

@@ -79,26 +79,32 @@ class App extends Component {
                     onWeb3Fallback={web3Fallback}
                   />
                 </Box>
-
-                <Flex maxWidth={'640px'} mx={'auto'} p={3}>
+                <Card maxWidth={'640px'} mx={'auto'} p={3} >
                   <Heading.h2 mr={3}>
                     <span role="img" aria-label="Waving hand">
                       👋
                     </span>
                   </Heading.h2>
-
                   <Text>
-                    Hi there, this is the Proof of Existence Dapplication for the Consensys Academy Blockchain Bootcamp!
+                    Hi there, I'm Max. This is my Proof of Existence Dapplication for the Consensys Academy Blockchain Bootcamp!
+                    <br/><br/>
+                    I'll walk you through how to operate it!<br/><br/>
+                    <strong>But first make sure you have your MetaMask set to Rinkeby Network and that you also have some Test Eth in your account. To get some, click the "Get Rinkeby ETH" link below. 
+                    </strong>
+                    <br/><br/>By the end, you will have uploaded a document to IPFS and notarized it on the Rinkeby Network. 
                   </Text>
-                </Flex>
-
+                </Card>
                 <Card maxWidth={'640px'} mx={'auto'} p={3} px={4}>
                   <NetworkIndicator
                     currentNetwork={network.current.id}
                     requiredNetwork={network.required.id}
                   />
+                  <InstructionsCard
+                  showRoute={this.showRoute}
+                  route={this.state.route}
+                />
                 </Card>
-
+                
                 <WalletBlock
                   account={account}
                   accountBalance={accountBalance}
@@ -108,10 +114,6 @@ class App extends Component {
                 />
 
                 {this.state.route === "default" ? <PrimaryCard /> : null}
-                {/* <InstructionsCard
-                  showRoute={this.showRoute}
-                  route={this.state.route}
-                /> */}
               </Box>
             )}
           </RimbleWeb3.Consumer>

@@ -47,7 +47,7 @@ class InstructionsCard extends React.Component {
               View Code GitHub
             </Link> */}
 
-            {this.props.route === "default" ? (
+            {/* {this.props.route === "default" ? (
               <Button.Outline
                 size="small"
                 onClick={() => this.props.showRoute("onboarding")}
@@ -69,9 +69,9 @@ class InstructionsCard extends React.Component {
           <Flex>
           <Box alignItems="center" alignSelf="center" mr={3}>
             <Icon name="Build" />
-          </Box>
+          </Box> */}
             </Flex>
-          </Flash>
+          {/* </Flash> */}
         </Box>
       </Flex>
     );

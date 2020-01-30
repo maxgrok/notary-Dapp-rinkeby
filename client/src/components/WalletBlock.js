@@ -29,9 +29,17 @@ class WalletBlock extends Component {
       )
     } else {
       return (
-        <Button onClick={this.handleConnectAccount} width={1}>
+        <div>
+        <Card maxWidth={'640px'} mx={'auto'} p={3} px={4}>
+                  <Text><strong>Step 1:</strong> Connect your Wallet by clicking on the "Connect Your Wallet" button below. 
+
+                  You will see the site update to reflect your wallet address and balance on the Rinkeby Network. 
+                  </Text>
+                  </Card>
+        <Button mainColor="green" onClick={this.handleConnectAccount} width={1}>
           Connect your wallet
         </Button>
+        </div>
       )
     }
   }

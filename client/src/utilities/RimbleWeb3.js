@@ -519,7 +519,6 @@ class RimbleTransaction extends React.Component {
 
   contractMethodSendWrapper = (contractMethod, argument, callback) => {
     console.log("contractMethodSendWrapper Callback: ", callback);
-    this.setState({fileName: argument});
     // Is it web3 capable?
     // if (!this.web3ActionPreflight()) {
     //   return;
@@ -557,11 +556,11 @@ class RimbleTransaction extends React.Component {
     // Show toast for starting transaction
     this.updateTransaction(transaction);
 
-    const { contract, account, fileName } = this.state;
-    console.log(" this is the fileName variable " + fileName)
+    const { contract, account } = this.state;
+    console.log(" this is the ipfsHash variable " + argument)
 
     try {
-      contract.methods.notarize(fileName)
+      contract.methods.notarize(argument)
         .send({ from: account})
         .on("transactionHash", hash => {
           // Submitted to block and received transaction hash
