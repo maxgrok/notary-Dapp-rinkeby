@@ -39,7 +39,7 @@ contract("ProofOfExistence", accounts => {
   });
   // write three more tests
   it("", async()=>{
-
+      // is Ownable, checks file imports from librar 
   });
 
   it("", async()=>{
