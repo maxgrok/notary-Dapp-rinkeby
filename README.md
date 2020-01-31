@@ -3,7 +3,7 @@ App: http://bit.ly/36DWMbW
 
 Rinkeby contract deployed: https://rinkeby.etherscan.io/address/0x9414edDe4295484ceb3836B8fce48f796FCDB9c4/  
 
-!['notary-dapp-rinkeby'](CABB - Notary Dapp Rinkeby Demo.gif)
+!['notary-dapp-rinkeby'](https://media.giphy.com/media/f6JmPFaArTS71zduv5/giphy.gif)
 
 ## What does this project do? 
 
