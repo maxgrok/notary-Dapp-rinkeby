@@ -4,7 +4,7 @@ This is a final project for Consensys Academy Blockchain Developer Bootcamp 2019
 
 App Demo: http://bit.ly/36DWMbW <br/><em>Requires: MetaMask & Internet Connection & Rinkeby ETH</em>
 
-Rinkeby contract deployed: https://rinkeby.etherscan.io/address/0x9414edDe4295484ceb3836B8fce48f796FCDB9c4/  
+Rinkeby contract deployed: https://rinkeby.etherscan.io/address/0x5b0c51dDA0263bBffEb3093D7F664305FB075e08/  
 
 <a href="https://youtu.be/fNtoz6l-YF8">!['notary-dapp-rinkeby'](https://media.giphy.com/media/f6JmPFaArTS71zduv5/giphy.gif)</a>
 
