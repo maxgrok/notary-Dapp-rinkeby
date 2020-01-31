@@ -6,7 +6,7 @@ App Demo: http://bit.ly/36DWMbW <br/><em>Requires: MetaMask & Internet Connectio
 
 Rinkeby contract deployed: https://rinkeby.etherscan.io/address/0x9414edDe4295484ceb3836B8fce48f796FCDB9c4/  
 
-!['notary-dapp-rinkeby'](https://media.giphy.com/media/f6JmPFaArTS71zduv5/giphy.gif)
+<a href="https://youtu.be/fNtoz6l-YF8">!['notary-dapp-rinkeby'](https://media.giphy.com/media/f6JmPFaArTS71zduv5/giphy.gif)</a>
 
 ## What does this project do? 
 
