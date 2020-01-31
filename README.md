@@ -8,25 +8,25 @@ This is a final project for Consensys Academy Blockchain Developer Bootcamp. It 
 
 ## How to I Set It Up Locally? 
 
+### Pre-Requisites
+
+<em>Required:</em> MetaMask, Node.js, Npm/yarn, Internet Connection (for Contract Deployment)
+Optional: Truffle (only for debugging and deploying smart contracts included)
+
 ### 1st
-Update .secret file with your Mnemonic for your MetaMask account. Set MetaMask to custom network `localhost` on port `8545`.
+Update .secret file with your Mnemonic for your MetaMask account and set your MetaMask extension to custom network `rinkeby network`. <em>Make sure you have test ETH in your Rinkeby Account</em>.
 
 ### 2nd
-Start ganache with your test mnemonic from MetaMask. `ganache-cli -m 'yourMnemonicHere' `
+Start the app from `client/` directory with `npm start`
 
 ### 3rd
-Run `truffle compile` and `truffle migrate --network develop` to compile and deploy your proof of existence contract from the root directory of the project.
-
-### 4th
-Start the app from `client/` directory with `npm start`
+Navigate to `localhost:3000` and upload and notarize documents with one click of a button!
  
  ### Credits
 
  Made with <3 from <a href="https://github.com/ConsenSys/rimble-app-demo">Rimble App Demo</a>.
 
-
-
-
-
+### License 
+MIT License, Max Goodman, January 2020. 
 
 
