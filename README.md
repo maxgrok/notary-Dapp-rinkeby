@@ -22,10 +22,10 @@ Start the app from `client/` directory with `npm start`
 ### 3rd
 Navigate to `localhost:3000` and upload and notarize documents with one click of a button!
  
-### Credits
+#### Credits
 Made with <3 from <a href="https://github.com/ConsenSys/rimble-app-demo">Rimble App Demo</a>.
 
-### License 
+#### License 
 MIT License, Max Goodman, January 2020. 
 
 
