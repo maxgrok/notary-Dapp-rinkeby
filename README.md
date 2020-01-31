@@ -1,6 +1,6 @@
 # README
 
-This is a final project for Consensys Academy Blockchain Developer Bootcamp.
+This is a final project for Consensys Academy Blockchain Developer Bootcamp 2019-2020.
 
 App Demo: http://bit.ly/36DWMbW <em>Requires: MetaMask & Internet Connection & Rinkeby ETH</em>
 
