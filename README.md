@@ -1,7 +1,8 @@
 # README
+
 This is a final project for Consensys Academy Blockchain Developer Bootcamp.
 
-App Demo Deployed: http://bit.ly/36DWMbW
+App Demo: http://bit.ly/36DWMbW <em>Requires: MetaMask & Internet Connection & Rinkeby ETH</em>
 
 Rinkeby contract deployed: https://rinkeby.etherscan.io/address/0x9414edDe4295484ceb3836B8fce48f796FCDB9c4/  
 
@@ -11,7 +12,7 @@ Rinkeby contract deployed: https://rinkeby.etherscan.io/address/0x9414edDe429548
 
 It allows users to upload a file to IPFS and notarize it with their MetaMask Rinkeby Ethereum Account and post it on Rinkeby Testnet with the simple click of a single deploy button. Complete with toast messages for user status updates. 
 
-## How to I Set It Up Locally? 
+## How do I set it up locally? 
 
 ### Pre-Requisites
 
